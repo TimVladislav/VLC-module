@@ -1,0 +1,3 @@
+VLC project
+	Module "electrical devices" for
+	VIRTUAL LABORATORY COMPLEX in electrical engineering
