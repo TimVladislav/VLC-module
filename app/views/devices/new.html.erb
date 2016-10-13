@@ -1,0 +1,7 @@
+<h2>Добавить прибор</h2>
+<%= form_for :device, url: devices_path, :html => {class: "123"} do |f| %>
+    <%= render :partial => 'form', :locals => {:f => f} %>
+    <div class="row">
+        <%= f.submit "Сохранить прибор", class: "btn" %>
+    </div>
+<% end %>

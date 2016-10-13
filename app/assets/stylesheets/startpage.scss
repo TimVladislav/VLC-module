@@ -1,3 +1,21 @@
 // Place all the styles related to the startpage controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+html,
+body,
+.menu,
+.valign-wrapper,
+.container {
+    height: 100%;
+}
+
+.valign-wrapper>a {
+    margin: 0 auto;
+}
+
+.add-device {
+    position: absolute;
+    float: right;
+    right: -100px;
+    top: 20px;
+}

@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-sm-4 col s4">
+        <div class="user-img">
+            <img class="profile-photo" src="<%= @device.pic %>">
+        </div>
+    </div>
+    <div class="col-sm-8 col s8">
+        <div class="row">
+            <dl class="dl-horizontal">
+                <div class="col s2"> <dt><span class="property">Название прибора:</span></dt> </div>
+                <div class="col s10">
+                    <dd>
+                        <%= @device.title %>
+                    </dd>
+                </div>
+            </dl>
+        </div>
+        <div class="row">
+            <dl class="dl-horizontal">
+                <div class="col s2"> <dt><span class="property">Описание прибора:</span></dt> </div>
+                <div class="col s10">
+                    <dd>
+                        <%= @device.description %>
+                    </dd>
+                </div>
+            </dl>
+        </div>
+    </div>
+</div>

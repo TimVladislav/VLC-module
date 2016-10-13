@@ -1,0 +1,32 @@
+<a href="/devices/new" class="btn-floating btn-large waves-effect waves-light red add-device"><i class="material-icons">add</i></a>
+<% @devices.each do |d| %>
+    <% if @i == 0 %>
+        <div class="row">
+    <% end %>
+    <div class="col s3">
+        <div class="card sticky-action">
+            <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="/uploads/1.jpg">
+            </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4"><%= d.title %><i class="material-icons right">more_vert</i></span>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4"><%= d.title %><i class="material-icons right">close</i></span>
+                <p><%= d.description %></p>
+            </div>
+            <div class="card-action">
+                <%= link_to 'Показать', device_path(d) %>
+                <%= link_to 'Удалить', device_path(d), method: :delete, data: {confirm: 'Вы уверены, что хотите удалить строку?' } %>
+            </div>
+        </div>
+    </div>
+    <% @i = @i + 1 %>
+    <% if @i == 4 %>
+        <% @i = 0 %>
+        </div>
+    <% end %>
+<% end %>
+<% unless @i == 0 %>
+    </div>
+<% end %>
