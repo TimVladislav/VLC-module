@@ -6,7 +6,7 @@
     <div class="col s3">
         <div class="card sticky-action">
             <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="/uploads/1.jpg">
+                <img class="activator" src="<%= d.pic.to_s[0..d.pic.to_s.rindex(".")-1] + "/picture.jpg" %>">
             </div>
             <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4"><%= d.title %><i class="material-icons right">more_vert</i></span>

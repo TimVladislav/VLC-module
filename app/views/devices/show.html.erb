@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-4 col s4">
         <div class="user-img">
-            <img class="profile-photo" src="<%= @device.pic %>">
+            <img class="profile-photo" src="<%= @img_path %>">
         </div>
     </div>
     <div class="col-sm-8 col s8">
@@ -35,6 +35,61 @@
                 </div>
             </dl>
         </div>
+        <div class="row">
+            <dl class="dl-horizontal">
+                <div class="col s2"> <dt><span class="property">index.html:</span></dt> </div>
+                <div class="col s10">
+                    <dd>
+                        <%= @device.html %>
+                    </dd>
+                </div>
+            </dl>
+        </div>
+        <div class="row">
+            <dl class="dl-horizontal">
+                <div class="col s2"> <dt><span class="property">styles:</span></dt> </div>
+                <div class="col s10">
+                    <dd>
+                        <%= @device.style %>
+                    </dd>
+                </div>
+            </dl>
+        </div>
+        <div class="row">
+            <dl class="dl-horizontal">
+              <div class="col s2"> <dt><span class="property">Базовый скрипт:</span></dt> </div>
+                <div class="col s10">
+                    <dd>
+                        <%= @device.basic_script %>
+                    </dd>
+                </div>
+            </dl>
+        </div>
+        <div class="row">
+            <dl class="dl-horizontal">
+                <div class="col s2"> <dt><span class="property">Дополнительный скрипт:</span></dt> </div>
+                <div class="col s10">
+                    <dd>
+                        <%= @device.buttons_script %>
+                    </dd>
+                </div>
+            </dl>
+        </div>
+        <div class="row">
+            <dl class="dl-horizontal">
+                <div class="col s2"> <dt><span class="property">Папка с img:</span></dt> </div>
+                <div class="col s10">
+                    <dd>
+                        <%= @device.buttons_img %>
+                    </dd>
+                </div>
+            </dl>
+        </div>
+
+
+
+
+
 
     </div>
 </div>

@@ -1,4 +1,5 @@
 require 'zip'
+require 'json'
 class DevicesController < ApplicationController
 
   before_action :find_device_by_id, only: [:show, :edit, :update, :destroy]
@@ -9,7 +10,7 @@ class DevicesController < ApplicationController
   end
 
   def show
-    @zip_path = @device.pic
+    @img_path = @device.pic.to_s[0..@device.pic.to_s.rindex(".")-1] + "/picture.jpg"
   end
 
   def new
@@ -20,9 +21,21 @@ class DevicesController < ApplicationController
     @device = Device.new(device_params)
     if @device.save
 
+      #unpacking .zip file
       @zip_path = "public" + @device.pic.to_s
       @destination = "public" + @device.pic.to_s[0..@device.pic.to_s.rindex("/")]
       unpackzip(@zip_path, @destination)
+      #---end---
+
+      #read json to hash
+      @json_path = "public" + @device.pic.to_s[0..@device.pic.to_s.rindex(".")-1] + "/config.json"
+      @json_file = File.read(@json_path)
+      @json_data_hash = JSON.parse(@json_file)
+      #---end---
+
+      #write hash in DB
+      @device.update(html: @json_data_hash["html"], style: @json_data_hash["style"], basic_script: @json_data_hash["basic_script"], buttons_script: @json_data_hash["buttons_script"], buttons_img: @json_data_hash["buttons_img"])
+      #---end---
 
       redirect_to @device
     else
