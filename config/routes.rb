@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :startpage, only: [:index]
   resources :devices, only: [:index, :new, :show, :destroy, :create]
+  resources :labs
   root "startpage#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

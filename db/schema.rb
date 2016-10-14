@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161014082322) do
+ActiveRecord::Schema.define(version: 20161014145926) do
 
   create_table "devices", force: :cascade do |t|
     t.string   "title",          limit: 255
@@ -24,6 +24,22 @@ ActiveRecord::Schema.define(version: 20161014082322) do
     t.string   "basic_script",   limit: 255
     t.string   "buttons_script", limit: 255
     t.string   "buttons_img",    limit: 255
+  end
+
+  create_table "devices_labs", id: false, force: :cascade do |t|
+    t.integer "device_id", limit: 4
+    t.integer "lab_id",    limit: 4
+  end
+
+  create_table "labs", force: :cascade do |t|
+    t.string   "title",       limit: 255
+    t.string   "description", limit: 255
+    t.string   "guide",       limit: 255
+    t.integer  "class_study", limit: 4
+    t.string   "department",  limit: 255
+    t.string   "topic",       limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
 end
