@@ -1,3 +1,4 @@
+require 'zip'
 class DevicesController < ApplicationController
 
   before_action :find_device_by_id, only: [:show, :edit, :update, :destroy]
@@ -8,6 +9,7 @@ class DevicesController < ApplicationController
   end
 
   def show
+    @zip_path = @device.pic
   end
 
   def new
@@ -17,6 +19,11 @@ class DevicesController < ApplicationController
   def create
     @device = Device.new(device_params)
     if @device.save
+
+      @zip_path = "public" + @device.pic.to_s
+      @destination = "public" + @device.pic.to_s[0..@device.pic.to_s.rindex("/")]
+      unpackzip(@zip_path, @destination)
+
       redirect_to @device
     else
       render 'new'
@@ -47,6 +54,17 @@ class DevicesController < ApplicationController
 
   def find_device_by_id
     @device = Device.find(params[:id])
+  end
+
+  def unpackzip(zip_path, destination)
+    FileUtils.mkdir_p(destination)
+
+    Zip::File.open(zip_path.to_s) do |zip_file|
+      zip_file.each do |file|
+        @file_path = File.join(destination, file.name)
+        zip_file.extract(file, @file_path) unless File.exist?(@file_path)
+      end
+    end
   end
 
 end
