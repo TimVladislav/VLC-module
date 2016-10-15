@@ -30,15 +30,33 @@
     <div id="test2" class="col s12"><%= @lab.guide %></div>
     <div id="test3" class="col s12">
         <% @lab.devices.each do |ld| %>
-            <div class="row">
-                <dl class="dl-horizontal">
-                    <div class="col s2"> <dt><span class="property"><%= ld.title %>:</span></dt> </div>
-                    <div class="col s10">
-                        <dd>
-                            id - <%= ld.id %>
-                        </dd>
+            <% if @i == 0 %>
+                <div class="row">
+            <% end %>
+            <div class="col s3">
+                <div class="card sticky-action">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="<%= ld.pic.to_s[0..ld.pic.to_s.rindex(".")-1] + "/picture.jpg" %>">
                     </div>
-                </dl>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4"><%= ld.title %><i class="material-icons right">more_vert</i></span>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4"><%= ld.title %><i class="material-icons right">close</i></span>
+                        <p><%= ld.description %></p>
+                    </div>
+                    <div class="card-action">
+                        <%= link_to 'Показать', device_path(ld) %>
+                    </div>
+                </div>
+            </div>
+            <% @i = @i + 1 %>
+            <% if @i == 4 %>
+                <% @i = 0 %>
+                </div>
+            <% end %>
+        <% end %>
+        <% unless @i == 0 %>
             </div>
         <% end %>
     </div>

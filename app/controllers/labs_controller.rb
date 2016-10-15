@@ -7,6 +7,7 @@ class LabsController < ApplicationController
   end
 
   def show
+    @i = 0
   end
 
   def new
