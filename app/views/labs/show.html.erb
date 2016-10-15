@@ -1,0 +1,77 @@
+<div class="row">
+    <div class="col s3">
+        <a href="/labs" class="btn-floating btn-large waves-effect waves-light red btn-dev"><i class="material-icons">arrow_back</i></a>
+    </div>
+    <div class="col s6">
+        <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+                <% if @lab.photo.length < 1 %>
+                    <img class="activator" src="/uploads/1.jpg">
+                <% else %>
+                    <img class="activator" src="<%= @lab.photo %>">
+                <% end %>
+            </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4"><%= @lab.title %></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 tab">
+        <ul class="tabs z-depth-3">
+            <li class="tab col s3"><a class="active" href="#test1">Описание лабораторной работы:</a></li>
+            <li class="tab col s3"><a href="#test2">Краткие методические указания:</a></li>
+            <li class="tab col s3"><a href="#test3">Используемые приборы:</a></li>
+            <li class="tab col s3"><a href="#test4">Дополнительные сведения:</a></li>
+          </ul>
+    </div>
+    <div id="test1" class="col s12"><%= @lab.description %></div>
+    <div id="test2" class="col s12"><%= @lab.guide %></div>
+    <div id="test3" class="col s12">
+        <% @lab.devices.each do |ld| %>
+            <div class="row">
+                <dl class="dl-horizontal">
+                    <div class="col s2"> <dt><span class="property"><%= ld.title %>:</span></dt> </div>
+                    <div class="col s10">
+                        <dd>
+                            id - <%= ld.id %>
+                        </dd>
+                    </div>
+                </dl>
+            </div>
+        <% end %>
+    </div>
+    <div id="test4" class="col s12">
+       <div class="row">
+            <dl class="dl-horizontal">
+                <div class="col s2"> <dt><span class="property">Тема работы:</span></dt> </div>
+                <div class="col s10">
+                    <dd>
+                        <%= @lab.topic %>
+                    </dd>
+                </div>
+            </dl>
+        </div>
+        <div class="row">
+            <dl class="dl-horizontal">
+                <div class="col s2"> <dt><span class="property">Факультет:</span></dt> </div>
+                <div class="col s10">
+                    <dd>
+                        <%= @lab.department %>
+                    </dd>
+                </div>
+            </dl>
+        </div>
+        <div class="row">
+            <dl class="dl-horizontal">
+                <div class="col s2"> <dt><span class="property">Курс:</span></dt> </div>
+                <div class="col s10">
+                    <dd>
+                        <%= @lab.class_study %>
+                    </dd>
+                </div>
+            </dl>
+        </div>
+    </div>
+</div>

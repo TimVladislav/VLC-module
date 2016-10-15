@@ -1,0 +1,16 @@
+<h2>Добавить прибор</h2>
+<%= form_for :lab, url: labs_path do |f| %>
+    <%= render :partial => 'form', :locals => {:f => f} %>
+    <% @y = 0 %>
+    <% @devices.each do |d| %>
+        <% @y += 1 %>
+        <p>
+            <input name="lab[device<%= @y %>]" type="hidden" value="0">
+            <input type="checkbox" value="<%= d.id %>" name="lab[device<%= @y %>]" id="lab_device_<%= @y %>">
+            <label for="lab_device_<%= @y %>"><%= d.title %></label>
+        </p>
+    <% end %>
+    <div class="row">
+        <%= f.submit "Сохранить Лабораторную работу", class: "btn" %>
+    </div>
+<% end %>

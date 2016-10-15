@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="input-field col s12">
+        <%= f.label :title, "Название лабораторной работы" %>
+        <%= f.text_field :title %>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s4">
+        <%= f.label :topic, "Тема лабораторной" %>
+        <%= f.text_field :topic %>
+    </div>
+    <div class="input-field col s4">
+        <%= f.label :department, "Факультет" %>
+        <%= f.text_field :department %>
+    </div>
+    <div class="input-field col s4">
+        <%= f.label :class_study, "Курс" %>
+        <%= f.text_field :class_study %>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12">
+        <%= f.label :description, "Описание лабораторной работы" %>
+        <%= f.text_area :description, class: 'materialize-textarea' %>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12">
+        <%= f.label :guide, "Краткие методические указания" %>
+        <%= f.text_area :guide, class: 'materialize-textarea' %>
+    </div>
+</div>
+<div class="row">
+    <div class="file-field input-field">
+        <div class="btn">
+            <span>File</span>
+            <%= f.file_field :photo %>
+        </div>
+        <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+        </div>
+    </div>
+</div>
+

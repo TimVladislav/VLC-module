@@ -1,0 +1,37 @@
+<a href="/labs/new" class="btn-floating btn-large waves-effect waves-light red add-device"><i class="material-icons">add</i></a>
+<% @t = 0 %>
+<% @labs.each do |l| %>
+    <% if @t == 0 %>
+        <div class="row">
+    <% end %>
+    <div class="col s3">
+        <div class="card sticky-action">
+            <div class="card-image waves-effect waves-block waves-light">
+                <% if l.photo.length < 1 %>
+                    <img class="activator" src="/uploads/1.jpg">
+                <% else %>
+                    <img class="activator" src="<%= l.photo %>">
+                <% end %>
+            </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4"><%= l.title %><i class="material-icons right">more_vert</i></span>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4"><%= l.title %><i class="material-icons right">close</i></span>
+                <p><%= l.description %></p>
+            </div>
+            <div class="card-action">
+                <%= link_to 'Показать', lab_path(l) %>
+                <%= link_to 'Удалить', lab_path(l), method: :delete, data: {confirm: 'Вы уверены, что хотите удалить эту лабораторную работу?' } %>
+            </div>
+        </div>
+    </div>
+    <% @t = @t + 1 %>
+    <% if @t == 4 %>
+        <% @t = 0 %>
+        </div>
+    <% end %>
+<% end %>
+<% unless @t == 0 %>
+    </div>
+<% end %>
