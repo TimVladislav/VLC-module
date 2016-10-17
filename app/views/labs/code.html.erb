@@ -1,0 +1,26 @@
+<%= form_for :codewrite, url: lab_codewrite_path(params[:id]) do |t| %>
+    <div class="row code-write">
+        <input name="dev[id]" type="hidden" value="<%= @device.id %>">
+        <div class="col s3">
+            <% @buttons.each do |b| %>
+                <p>
+                    <input name="but_s" value="<%= b.second["id"].to_s[1..-1] %>" type="radio" id="<%= b.second["id"].to_s[1..-1] %>" />
+                    <label for="<%= b.second["id"].to_s[1..-1] %>"><%= b.first %></label>
+                    <img src="<%= @img_path.to_s + b.second["img"].to_s %>" alt="">
+                </p>
+            <% end %>
+        </div>
+        <div class="col s9">
+            <div class="row">
+                <div class="input-field col s12">
+                    <%= t.label :code, "Введите ваш js-код" %>
+                    <%= t.text_area :code, class: 'materialize-textarea text' %>
+                </div>
+            </div>
+            <%= t.submit 'Сохранить действие для кнопки в файл', class: "btn" %>
+        </div>
+    </div>
+<% end %>
+</form>
+
+

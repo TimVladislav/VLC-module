@@ -47,6 +47,7 @@
                     </div>
                     <div class="card-action">
                         <%= link_to 'Показать', device_path(ld) %>
+                        <a href="/labs/<%= @lab.id %>/code?device=<%= ld.id %>">Редактор кода</a>
                     </div>
                 </div>
             </div>
