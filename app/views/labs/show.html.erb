@@ -16,6 +16,11 @@
             </div>
         </div>
     </div>
+    <div class="col s3">
+        <%= form_for :export, url: lab_export_path(@lab) do |f| %>
+            <%= f.submit 'Собрать в zip', class: 'btn' %>
+        <% end %>
+    </div>
 </div>
 <div class="row">
     <div class="col s12 tab">

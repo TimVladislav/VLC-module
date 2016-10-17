@@ -1,3 +1,5 @@
+require 'zip'
+require_relative '../services/zip_file_controller.rb'
 class LabsController < ApplicationController
 
   before_action :find_lab_by_id, only: [:show, :edit, :update, :code, :destroy]
@@ -65,13 +67,24 @@ class LabsController < ApplicationController
     @button_selector = "#" + params[:but_s].to_s
     @text_code = params[:codewrite][:code]
     @path_js = "public/uploads/lab/photo/#{@lab.id}/#{params[:but_s]}.js"
-    
+
     File.open(@path_js, "w+") do |f|
       f.write("$('#{@button_selector}').on('click', function(){\n")
       f.write(@text_code.to_s + "\n")
       f.write("});")
     end
     redirect_to @lab
+  end
+
+  def export
+
+    @pat = "public/uploads/lab/photo/#{params[:lab_id]}"
+    @fil = "pack_lab/#{params[:lab_id]}.zip"
+
+
+    @zf = ZipFileController.new(@pat, @fil)
+    @zf.write
+    redirect_to labs_path
   end
 
   def destroy

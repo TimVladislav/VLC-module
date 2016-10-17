@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :labs do
     get  :code, on: :member
     post :codewrite
+    post :export
   end
   root "startpage#index"
   # The priority is based upon order of creation: first created -> highest priority.
