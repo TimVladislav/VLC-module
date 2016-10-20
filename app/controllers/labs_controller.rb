@@ -85,7 +85,7 @@ class LabsController < ApplicationController
     @pat = "public/uploads/lab/photo/#{params[:lab_id]}"
     @fil = "pack_lab/#{params[:lab_id]}.zip"
 
-    @zf = ZipFileController.new(@pat, @fil)
+    @zf = ZipFileController.new(@pat, @fil, Lab.find(params[:lab_id]).devices)
     @zf.write
     flash[:success] = "Лабораторная работа успешно экспортирована в '#{@fil}'"
     redirect_to labs_path

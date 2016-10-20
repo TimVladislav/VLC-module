@@ -2,10 +2,18 @@ require 'rubygems'
 require 'zip'
 
 class ZipFileController
-  def initialize(input_dir, output_file)
+  def initialize(input_dir, output_file, devices)
     @input_dir = input_dir
     @output_file = output_file
-    @json = "{ \n"
+    @d = 0
+    @json = "{ \n   \"devices\" : { \n"
+    devices.each do |d|
+      @json += "    \"device_#{@d}\" : { \n"
+      @json += "      \"id\" : \"#{d.id}\", \n"
+      @json += "      \"name\" : \"#{d.title}\","
+    end
+    @json = @json.to_s[0..-2]
+    @json += "\n  },"
     @dir = ""
     @i = 0
   end
