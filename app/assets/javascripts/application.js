@@ -17,3 +17,9 @@
 // require turbolinks
 
 //= require_tree .
+
+$(document).ready(function(){
+  var content = $('#success').text();
+  if (content.length > 12)
+    Materialize.toast(content, 4000);
+});

@@ -29,7 +29,7 @@ class LabsController < ApplicationController
           @lab.devices << Device.find(@id_device)
         end
       end
-
+      flash[:success] = "Лабораторная работа '#{@lab.title}' успешно создана"
       redirect_to @lab
     else
       render 'new'
@@ -42,6 +42,7 @@ class LabsController < ApplicationController
 
   def update
     if @lab.update (lab_params)
+      flash[:success] = "Лабораторная работа '#{@lab.title}' успешно изменена"
       redirect_to @lab
     else
       render 'edit'
@@ -75,6 +76,7 @@ class LabsController < ApplicationController
       f.write(@text_code.to_s + "\n")
       f.write("});")
     end
+    flash[:success] = "Кнопка '#{params[:but_s]}' у прибора '#{@device.title}' изменена"
     redirect_to @lab
   end
 
@@ -85,11 +87,13 @@ class LabsController < ApplicationController
 
     @zf = ZipFileController.new(@pat, @fil)
     @zf.write
+    flash[:success] = "Лабораторная работа успешно экспортирована в '#{@fil}'"
     redirect_to labs_path
   end
 
   def destroy
     @lab.destroy
+    flash[:success] = "Лабораторная работа '#{@lab.title}' успешно удалена"
     redirect_to labs_path
   end
 

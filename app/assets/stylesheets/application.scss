@@ -15,3 +15,8 @@
  */
 @import "materialize/components/color";
 @import 'materialize';
+
+#errors,
+#success {
+  display: none !important;
+}

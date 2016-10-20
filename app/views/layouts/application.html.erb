@@ -9,6 +9,12 @@
 </head>
 <body>
   <div class="container">
+    <span id="errors">
+      <%= flash[:errors] %>
+    </span>
+    <span id="success">
+      <%= flash[:success] %>
+    </span>
     <%= yield %>
   </div>
 

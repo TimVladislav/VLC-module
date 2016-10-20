@@ -37,6 +37,7 @@ class DevicesController < ApplicationController
       @device.update(html: @json_data_hash["html"], style: @json_data_hash["style"], basic_script: @json_data_hash["basic_script"], buttons_script: @json_data_hash["buttons_script"], buttons_img: @json_data_hash["buttons_img"])
       #---end---
 
+      flash[:success] = "Прибор '#{@device.title}' создан"
       redirect_to @device
     else
       render 'new'
@@ -48,6 +49,7 @@ class DevicesController < ApplicationController
 
   def update
     if @device.update(device_params)
+      flash[:success] = "Прибор '#{@device.title}' изменен"
       redirect_to @device
     else
       render 'edit'
@@ -55,7 +57,9 @@ class DevicesController < ApplicationController
   end
 
   def destroy
+    @d_t = @device.title
     @device.destroy
+    flash[:success] = "Прибор '#{@d_t}' удален"
     redirect_to devices_path
   end
 
