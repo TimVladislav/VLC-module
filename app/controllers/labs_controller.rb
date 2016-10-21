@@ -98,6 +98,7 @@ class LabsController < ApplicationController
     @file_txt = ""
     if (File.exists? @path) 
       @file_txt = File.open(@path, 'r'){ |file| file.read }
+      @file_txt = @file_txt.to_s[@file_txt.to_s.index("{")+2..@file_txt.to_s.rindex("}")-2]
     end
     render text: @file_txt
   end
