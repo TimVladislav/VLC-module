@@ -91,6 +91,17 @@ class LabsController < ApplicationController
     redirect_to labs_path
   end
 
+  def butt_send
+    @dev_id = params[:dev_id]
+    @butt_name = params[:butt_name]
+    @path = "public/uploads/lab/photo/#{params[:lab_id]}/#{@dev_id}/#{@butt_name}.js"
+    @file_txt = ""
+    if (File.exists? @path) 
+      @file_txt = File.open(@path, 'r'){ |file| file.read }
+    end
+    render text: @file_txt
+  end
+
   def destroy
     @lab.destroy
     flash[:success] = "Лабораторная работа '#{@lab.title}' успешно удалена"

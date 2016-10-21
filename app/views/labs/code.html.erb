@@ -1,6 +1,6 @@
 <%= form_for :codewrite, url: lab_codewrite_path(params[:id]) do |t| %>
-    <div class="row code-write">
-        <input name="dev[id]" type="hidden" value="<%= @device.id %>">
+  <div class="row code-write" id="<%= @lab.id %>">
+        <input id="dev" name="dev[id]" type="hidden" value="<%= @device.id %>">
         <div class="col s3">
             <% @buttons.each do |b| %>
                 <p>

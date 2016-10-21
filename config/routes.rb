@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get  :code, on: :member
     post :codewrite
     post :export
+    post :butt_send, on: :member
   end
   root "startpage#index"
   # The priority is based upon order of creation: first created -> highest priority.
