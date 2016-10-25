@@ -17,8 +17,11 @@
         </div>
     </div>
     <div class="col s3">
-        <%= form_for :export, url: lab_export_path(@lab) do |f| %>
-            <%= f.submit 'Собрать в zip', class: 'btn' %>
+      <%= form_for :export, url: lab_export_path(@lab), :html => {:class => 'ex-f'} do |f| %>
+            <% #f.submit 'Собрать в zip', class: 'btn' %>
+            <%= button_tag(type: 'submit', class: 'btn-floating btn-large waves-effect waves-light red') do %>
+              <i class="material-icons">archive</i>
+            <% end %>
         <% end %>
     </div>
 </div>
