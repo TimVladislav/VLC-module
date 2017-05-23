@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" >
+    <head>
+        <meta charset="utf-8" />
+        <meta name="author" content="Adatum.ru" />
+        <title>HTML5 Загрузка и обрезка изображений </title>
+		<link rel="stylesheet" type="text/css" href="default.css" />
+        <link href="css/jquery.Jcrop.min.css" rel="stylesheet" type="text/css" />
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.Jcrop.min.js"></script>
+        <script src="js/script.js"></script>
+    </head>
+    <body>
+
+
+      <div class="adatum-top clearfix">
+				<h2><a href="http://adatum.ru/2013/02/05/stroim-rodoslo…na-chistom-css/"><strong>&laquo; </strong>Adatum.ru</a></h2>
+			<div id="sign"><a href="http://www.Adatum.ru/"><img src="http://www.Adatum.ru/file/adatum.png" border="0">Adatum</a></div>
+</div>
+<div class="container">		
+        
+            
+
+                <!-- upload form -->
+                <form id="upload_form" enctype="multipart/form-data" method="post" action="upload.php" onsubmit="return checkForm()">
+                    <!-- hidden crop params -->
+                    <input type="hidden" id="x1" name="x1" />
+                    <input type="hidden" id="y1" name="y1" />
+                    <input type="hidden" id="x2" name="x2" />
+                    <input type="hidden" id="y2" name="y2" />
+
+                    <h2>Шаг 1: Пожалуйста, выберите файл изображения</h2>
+                    <div><input type="file" name="image_file" id="image_file" onchange="fileSelectHandler()" /></div>
+
+                    <div class="error"></div>
+
+                    <div class="step2">
+                        <h2>Шаг 2: Пожалуйста, выберите область</h2>
+                        <img id="preview" />
+<br><br>
+                        <div class="info">
+                            <label>Размер файла: </label> <input type="text" id="filesize" name="filesize" />
+                            <label>Тип: </label> <input type="text" id="filetype" name="filetype" />
+                            <label>Размер изображения</label> <input type="text" id="filedim" name="filedim" /><br><br>
+                            <label>W</label> <input type="text" id="w" name="w" /><br><br>
+                            <label>H</label> <input type="text" id="h" name="h" /><br><br>
+                        </div>
+
+                        <input type="submit" class="button default" value="Обрезать и загрузить" />
+                    </div>
+                </form>
+            
+        </div>
+    </body>
+</html>

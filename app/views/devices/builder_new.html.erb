@@ -1,0 +1,7 @@
+<h2>Конструктор приборов</h2>
+<%= form_for :device, url: '/device/builder/new', :html => {class: "123"} do |f| %>
+    <%= render :partial => 'form_builder', :locals => {:f => f} %>
+    <div class="row">
+        <%= f.submit "Сохранить прибор", class: "btn" %>
+    </div>
+<% end %>

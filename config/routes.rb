@@ -8,6 +8,13 @@ Rails.application.routes.draw do
     post :butt_send, on: :member
   end
   root "startpage#index"
+
+  get '/builder', :to => 'devices#builder_new'
+  get '/builder/:id', :to => 'devices#builder_index'
+  get '/builder/:id/success', :to => 'devices#builder_success'
+  post '/builder/:id/addbutton', :to => 'devices#builder_new_button'
+  post '/device/builder/new' => 'devices#builder_create'
+  post '/builder/:id/resize', :to => 'devices#builder_button'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
