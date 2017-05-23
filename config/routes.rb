@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   post '/builder/:id/addbutton', :to => 'devices#builder_new_button'
   post '/device/builder/new' => 'devices#builder_create'
   post '/builder/:id/resize', :to => 'devices#builder_button'
+
+  get '/test/json', :to => 'devices#test_json'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

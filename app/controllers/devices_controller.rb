@@ -80,6 +80,7 @@ class DevicesController < ApplicationController
     @id_n = params.require(:device)[:id_n]
     @img_path = @device.pic.to_s[0..@device.pic.to_s.rindex('/')-1] + @device.pic.to_s[@device.pic.to_s.rindex('/')..@device.pic.to_s.rindex('.')-1] + '/buttons/' + @name + '.jpg';
 
+    #Update css
     @css = "
     #" + params.require(:device)[:id_n] + " { 
       position: absolute;
@@ -91,6 +92,7 @@ class DevicesController < ApplicationController
     @fcss.puts @css
     @fcss.close
 
+    #Update html
     @html = "
     <a href='#' id='" + params.require(:device)[:id_n] + "'><img src='buttons/" + @name + ".jpg'/></a>
     "
@@ -98,6 +100,20 @@ class DevicesController < ApplicationController
     @fhtml = File.open(Rails.root.to_s + '/public' + @device.pic.to_s[0..@device.pic.to_s.rindex('/')-1] + @device.pic.to_s[@device.pic.to_s.rindex('/')..@device.pic.to_s.rindex('.')-1] + '/index.html', 'a')
     @fhtml.puts @html
     @fhtml.close
+
+    #Update json
+    @json_path = Rails.root.to_s + '/public' + @device.pic.to_s[0..@device.pic.to_s.rindex('/')-1] + @device.pic.to_s[@device.pic.to_s.rindex('/')..@device.pic.to_s.rindex('.')-1] + "/config.json"
+    @json_file = File.read(@json_path)
+    @json_data_hash = JSON.parse(@json_file)
+    @json_data_hash['buttons'][@name] = {
+      "img" => @name + ".jpg",
+      "id"  => "#" + @id_n
+    }
+    @fjson = File.open(Rails.root.to_s + '/public' + @device.pic.to_s[0..@device.pic.to_s.rindex('/')-1] + @device.pic.to_s[@device.pic.to_s.rindex('/')..@device.pic.to_s.rindex('.')-1] + '/config.json', 'w')
+    @fjson.puts @json_data_hash.to_json
+    @fjson.close
+
+
 
     @image = MiniMagick::Image.open(Rails.root.to_s + '/public' + @device.pic.to_s[0..@device.pic.to_s.rindex('/')-1] + @device.pic.to_s[@device.pic.to_s.rindex('/')..@device.pic.to_s.rindex('.')-1] + '/picture.jpg')
     @image.crop @w + "x" + @h + "+" + @x1 + "+" + @y1
@@ -212,7 +228,21 @@ class DevicesController < ApplicationController
     redirect_to @device
   end
 
-  private
+  def test_json
+    @hash = { :people1 => {:name => "Konata Izumi", 'age' => 16, 1 => 2 }, :people2 => {:name => "Konata Izumi2", 'age' => 12, 1 => 2 }}
+
+    @device = Device.find(58)
+
+    @json_path = Rails.root.to_s + '/public' + @device.pic.to_s[0..@device.pic.to_s.rindex('/')-1] + @device.pic.to_s[@device.pic.to_s.rindex('/')..@device.pic.to_s.rindex('.')-1] + "/config.json"
+    @json_file = File.read(@json_path)
+    @json_data_hash = JSON.parse(@json_file)
+
+    @json_data_hash['buttons']['acv'] = {'name' => 'acv', 'id' => 'ACV'}
+    
+    render 'json'
+  end
+
+private
 
   def builder_new
     redirect_to 'builder_new'
