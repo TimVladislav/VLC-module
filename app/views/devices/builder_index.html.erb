@@ -1,52 +1,81 @@
-<link rel="stylesheet" type="text/css" href="/Jcrop/default.css" />
 <link href="/Jcrop/css/jquery.Jcrop.min.css" rel="stylesheet" type="text/css" />
 <script src="/Jcrop/js/jquery.min.js"></script>
 <script src="/Jcrop/js/jquery.Jcrop.min.js"></script>
 <script src="/Jcrop/js/script.js"></script>
 ID прибора: <%= @device.id %>
-<div class="container-fluid">		
-	<!-- upload form -->
-	<form id="upload_form" enctype="multipart/form-data" method="POST" action="/builder/<%= @device.id %>/resize" onsubmit="return checkForm()">
-	    <!-- hidden crop params -->
-	    <input type="hidden" id="device_x1" name="device[x1]" />
-	    <input type="hidden" id="device_y1" name="device[y1]" />
-	    <input type="hidden" id="device_x2" name="device[x2]" />
-	    <input type="hidden" id="device_y2" name="device[y2]" />
-	    <input type="hidden" id="device_w" name="device[w]" />
-	    <input type="hidden" id="device_h" name="device[h]" />
-		
-	    <div class="error"></div>
-
-	    <div class="step2">
-	        <h2>Шаг 2: Пожалуйста, выберите область для определения кнопки</h2>
-
-	        <div class="row">
-	        	<div class="col m6"><label>Наименование кнопки</label> <input type="text" id="device_name_n" name="device[name_n]" /></div>
-	        	<div class="col m6"><label>ID кнопки (только латинские)</label> <input type="text" id="device_id_n" name="device[id_n]" /></div>
-	        </div>
-	        
-	        <img id="preview" src="<%=@device.pic.to_s[0..@device.pic.to_s.rindex('/')-1] + @device.pic.to_s[@device.pic.to_s.rindex('/')..@device.pic.to_s.rindex('.')-1] + '/picture.jpg' %>" />
-			<br><br>
-	        <div class="info row">
-	            <div class="col m2"><label>X</label> <input type="text" id="x" name="x" /><br><br></div>
-	            <div class="col m2"><label>Y</label> <input type="text" id="y" name="y" /><br><br></div>
-	            <div class="col m2"><label>X2</label> <input type="text" id="x2" name="x2" /><br><br></div>
-	            <div class="col m2"><label>Y2</label> <input type="text" id="y2" name="y2" /><br><br></div>
-	            <div class="col m2"><label>W</label> <input type="text" id="w" name="w" /><br><br></div>
-	            <div class="col m2"><label>H</label> <input type="text" id="h" name="h" /><br><br></div>
-	        </div>
-
-	        <input type="submit" class="button default" value="Обрезать и загрузить" />
-	    </div>
-	</form>
-
+<!-- upload form -->
+<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12">
+		<div class="x_panel">
+			<div class="x_title">
+				<h2> Шаг 2: Пожалуйста, выберите область для определения кнопки <small> Конструктор приборов </small></h2>
+				
+				<div class="clearfix"></div>
+			</div>
+			<div class="x_content">
+				<br />
+				<form id="upload_form" enctype="multipart/form-data" method="POST" action="/builder/<%= @device.id %>/resize" onsubmit="return checkForm()">
+					<!-- hidden crop params -->
+					<input type="hidden" id="device_x1" name="device[x1]" />
+					<input type="hidden" id="device_y1" name="device[y1]" />
+					<input type="hidden" id="device_x2" name="device[x2]" />
+					<input type="hidden" id="device_y2" name="device[y2]" />
+					<input type="hidden" id="device_w" name="device[w]" />
+					<input type="hidden" id="device_h" name="device[h]" />
+					
+					<div class="error"></div>
+					<div class="step2">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="control-label col-md-4 col-sm-4 col-xs-12">Наименование кнопки <span class="required">*</span></label>
+									<div class="col-md-8 col-sm-8 col-xs-12">
+										<input type="text" id="device_name_n" name="device[name_n]" class="form-control col-md-7 col-xs-12" required="required" />
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="control-label col-md-4 col-sm-4 col-xs-12">ID кнопки (только латинские) <span class="required">*</span></label>
+									<div class="col-md-8 col-sm-8 col-xs-12">
+										<input type="text" id="device_id_n" name="device[id_n]" class="form-control col-md-7 col-xs-12" required="required" />
+									</div>
+								</div>
+							</div>
+							
+							
+						</div>
+						
+						<img id="preview" src="<%=@device.pic.to_s[0..@device.pic.to_s.rindex('/')-1] + @device.pic.to_s[@device.pic.to_s.rindex('/')..@device.pic.to_s.rindex('.')-1] + '/picture.jpg' %>" />
+						<br><br>
+						<div class="info row">
+							<div class="col-md-2"><label>X</label> <input type="text" id="x" name="x" /><br><br></div>
+							<div class="col-md-2"><label>Y</label> <input type="text" id="y" name="y" /><br><br></div>
+							<div class="col-md-2"><label>X2</label> <input type="text" id="x2" name="x2" /><br><br></div>
+							<div class="col-md-2"><label>Y2</label> <input type="text" id="y2" name="y2" /><br><br></div>
+							<div class="col-md-2"><label>W</label> <input type="text" id="w" name="w" /><br><br></div>
+							<div class="col-md-2"><label>H</label> <input type="text" id="h" name="h" /><br><br></div>
+						</div>
+						
+						<div class="ln_solid"></div>
+						<div class="form-group">
+							<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+								<input type="submit" class="btn btn-success" value="Обрезать и загрузить" />
+							</div>
+						</div>
+					</div>
+				</form>
+				
+			</div>
+		</div>
+	</div>
 </div>
+
 <script>
 	$('#preview').Jcrop({
 		onChange: showCoords,
 		onSelect: showCoords
 	});
-
 	function showCoords(c) {
 		$('#x').val(c.x);
 		$('#y').val(c.y);

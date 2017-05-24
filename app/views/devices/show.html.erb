@@ -1,88 +1,135 @@
+<div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Информация о приборе</h3>
+              </div>
+
+              
+            </div>
+            
+            <div class="clearfix"></div>
+
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2><%= @device.title %> <small>id: <%= @device.id %></small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
+                      <div class="profile_img">
+                        <div id="crop-avatar">
+                          <!-- Current avatar -->
+                          <img class="img-responsive avatar-view" src="<%= @img_path %>" alt="Avatar" title="Change the avatar">
+                        </div>
+                      </div>
+                      <h3><%= @device.title %></h3>
+
+                      <ul class="list-unstyled user_data">
+                        <li><i class="fa fa-map-marker user-profile-icon"></i> <%= @device.description %>
+                        </li>
+
+                        <li>
+                          <i class="fa fa-briefcase user-profile-icon"></i> id: <%= @device.id %>
+                        </li>
+
+                        
+                      </ul>
+
+                      <!-- <a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a> -->
+                      <br />
+
+                      
+
+                    </div>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+
+                      <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                          <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Описание прибора</a>
+                          </li>
+                          <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Дополнительная информация</a>
+                          </li>
+                        </ul>
+                        <div id="myTabContent" class="tab-content">
+                          <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+
+                            <!-- start recent activity -->
+                            <ul class="messages">
+                              <li>
+                                
+                                
+                                <div class="message_wrapper">
+                                 
+                                  <blockquote class="message"><%= @device.description %></blockquote>
+                                  <br />
+                                  
+                                </div>
+                              </li>
+                            </ul>
+                            <!-- end recent activity -->
+
+                          </div>
+                          <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+                            <ul class="messages">
+                                <li>
+                                    <div class="message_wrapper">
+                                      <h4 class="heading">Путь к файлу:</h4>
+                                      <blockquote class="message"><%= @device.pic %></blockquote>
+                                      <br /> 
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="message_wrapper">
+                                      <h4 class="heading">index.html:</h4>
+                                      <blockquote class="message"><%= @device.html %></blockquote>
+                                      <br /> 
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="message_wrapper">
+                                      <h4 class="heading">styles:</h4>
+                                      <blockquote class="message"><%= @device.style %></blockquote>
+                                      <br /> 
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="message_wrapper">
+                                      <h4 class="heading">Базовый скрипт:</h4>
+                                      <blockquote class="message"><%= @device.basic_script %></blockquote>
+                                      <br /> 
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="message_wrapper">
+                                      <h4 class="heading">Дополнительный скрипт:</h4>
+                                      <blockquote class="message"><%= @device.buttons_script %></blockquote>
+                                      <br /> 
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="message_wrapper">
+                                      <h4 class="heading">Папка с img:</h4>
+                                      <blockquote class="message"><%= @device.buttons_img %></blockquote>
+                                      <br /> 
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
 
-<div class="row">
-    <div class="col s3">
-        <a href="/devices" class="btn-floating btn-large waves-effect waves-light red btn-dev"><i class="material-icons">arrow_back</i></a>
-    </div>
-    <div class="col s6">
-        <div class="card">
-            <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="<%= @img_path %>">
-            </div>
-            <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4"><%= @device.title %></span>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col s12 tab">
-        <ul class="tabs z-depth-3">
-            <li class="tab col s3"><a class="active" href="#test1">Описание прибора:</a></li>
-            <li class="tab col s3"><a href="#test2">Дополнительная информация</a></li>
-          </ul>
-    </div>
-    <div id="test1" class="col s12"><%= @device.description %></div>
-    <div id="test2" class="col s12">
-        <div class="row">
-            <dl class="dl-horizontal">
-                <div class="col s2"> <dt><span class="property">Путь к файлу:</span></dt> </div>
-                <div class="col s10">
-                    <dd>
-                        <%= @device.pic %>
-                    </dd>
-                </div>
-            </dl>
-        </div>
-        <div class="row">
-            <dl class="dl-horizontal">
-                <div class="col s2"> <dt><span class="property">index.html:</span></dt> </div>
-                <div class="col s10">
-                    <dd>
-                        <%= @device.html %>
-                    </dd>
-                </div>
-            </dl>
-        </div>
-        <div class="row">
-            <dl class="dl-horizontal">
-                <div class="col s2"> <dt><span class="property">styles:</span></dt> </div>
-                <div class="col s10">
-                    <dd>
-                        <%= @device.style %>
-                    </dd>
-                </div>
-            </dl>
-        </div>
-        <div class="row">
-            <dl class="dl-horizontal">
-              <div class="col s2"> <dt><span class="property">Базовый скрипт:</span></dt> </div>
-                <div class="col s10">
-                    <dd>
-                        <%= @device.basic_script %>
-                    </dd>
-                </div>
-            </dl>
-        </div>
-        <div class="row">
-            <dl class="dl-horizontal">
-                <div class="col s2"> <dt><span class="property">Дополнительный скрипт:</span></dt> </div>
-                <div class="col s10">
-                    <dd>
-                        <%= @device.buttons_script %>
-                    </dd>
-                </div>
-            </dl>
-        </div>
-        <div class="row">
-            <dl class="dl-horizontal">
-                <div class="col s2"> <dt><span class="property">Папка с img:</span></dt> </div>
-                <div class="col s10">
-                    <dd>
-                        <%= @device.buttons_img %>
-                    </dd>
-                </div>
-            </dl>
-        </div>
-    </div>
-</div>
+

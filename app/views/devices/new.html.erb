@@ -1,7 +1,25 @@
-<h2>Добавить прибор</h2>
-<%= form_for :device, url: devices_path, :html => {class: "123"} do |f| %>
-    <%= render :partial => 'form', :locals => {:f => f} %>
-    <div class="row">
-        <%= f.submit "Сохранить прибор", class: "btn" %>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Добавить прибор <small> </small></h2>
+        
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <br />
+
+		<%= form_for :device, url: devices_path, :html => {class: 'form-horizontal form-label-left', 'data-parsley-validate': ''} do |f| %>
+		    <%= render :partial => 'form', :locals => {:f => f} %>
+		  
+		    <div class="ln_solid"></div>
+	          <div class="form-group">
+	            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+	            	<%= f.submit "Сохранить прибор", class: "btn btn-success" %>
+	            </div>
+	          </div>
+		<% end %>
+      </div>
     </div>
-<% end %>
+  </div>
+</div>

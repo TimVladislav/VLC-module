@@ -1,32 +1,46 @@
-<div class="row">
-    <div class="input-field col s12">
-        <%= f.label :title, "Название прибора" %>
-        <%= f.text_field :title %>
+<div class="form-group">
+    <%= f.label :title, class: 'control-label col-md-3 col-sm-3 col-xs-12' do %>
+    Название прибора <span class="required">*</span>
+    <% end %>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <%= f.text_field :title, class: 'form-control col-md-7 col-xs-12', 'required': 'required' %>
     </div>
 </div>
-<div class="row">
-    <div class="input-field col s12">
-        <%= f.label :name, "Идентификатор прибора (Только латинские буквы)" %>
-        <%= f.text_field :name %>
+
+<div class="form-group">
+    <%= f.label :name, class: 'control-label col-md-3 col-sm-3 col-xs-12' do %>
+    Идентификатор прибора (Только латинские буквы) <span class="required">*</span>
+    <% end %>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <%= f.text_field :name, class: 'form-control col-md-7 col-xs-12', 'required': 'required' %>
     </div>
 </div>
-<div class="row">
-    <div class="input-field col s12">
-        <%= f.label :description, "Описание прибора" %>
-        <%= f.text_area :description, class: 'materialize-textarea' %>
+
+<div class="form-group">
+    <%= f.label :description, class: 'control-label col-md-3 col-sm-3 col-xs-12' do %>
+    Описание прибора <span class="required">*</span>
+    <% end %>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <%= f.text_area :description, class: 'form-control col-md-7 col-xs-12', 'required': 'required' %>
     </div>
 </div>
-<div class="row">
-    <div class="file-field input-field">
-        <div class="btn">
-            <span>Изображение</span>
-            <%= f.file_field :pic %>
-        </div>
-        <div class="file-path-wrapper">
-            <input class="file-path validate" type="text">
-        </div>
+
+<div class="form-group">
+    <%= f.label :pic, class: 'control-label col-md-3 col-sm-3 col-xs-12' do %>
+    Фото прибора <span class="required">*</span>
+    <% end %>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <%= f.file_field :pic, class: 'col-md-7 col-xs-12', 'required': 'required' %>
     </div>
 </div>
+
+
+
+
+
+
+
+
 
 
 

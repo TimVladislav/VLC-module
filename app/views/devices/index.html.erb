@@ -1,35 +1,61 @@
-<a href="/" class="btn-floating btn-large waves-effect waves-light red btn-dev back-page"><i class="material-icons">arrow_back</i></a>
-
-<a href="/devices/new" class="btn-floating btn-large waves-effect waves-light red add-device"><i class="material-icons">add</i></a>
-<a href="/builder" style="top:100px" class="btn-floating btn-large waves-effect waves-light red add-device"><i class="material-icons">build</i></a>
-<% @devices.each do |d| %>
-    <% if @i == 0 %>
-        <div class="row">
-    <% end %>
-    <div class="col s3">
-        <div class="card sticky-action">
-            <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="<%= d.pic.to_s[0..d.pic.to_s.rindex(".")-1] + "/picture.jpg" %>">
-            </div>
-            <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4"><%= d.title %><i class="material-icons right">more_vert</i></span>
-            </div>
-            <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4"><%= d.title %><i class="material-icons right">close</i></span>
-                <p><%= d.description %></p>
-            </div>
-            <div class="card-action">
-                <%= link_to 'Показать', device_path(d) %>
-                <%= link_to 'Удалить', device_path(d), method: :delete, data: {confirm: 'Вы уверены, что хотите удалить строку?' } %>
-            </div>
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3> САПР ВЛК <small> Виртуальный лабораторный комплекс </small> </h3>
         </div>
     </div>
-    <% @i = @i + 1 %>
-    <% if @i == 4 %>
-        <% @i = 0 %>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Электротехнические приборы <small>  </small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-plus"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/devices/new">Добавить прибор</a>
+                        </li>
+                        <li><a href="/builder">Конструктор приборов</a>
+                    </li>
+                </ul>
+            </li>
+            <li><a class="close-link"><i class="fa fa-close"></i></a>
+        </li>
+    </ul>
+    <div class="clearfix"></div>
+</div>
+<div class="x_content">
+    <div class="row">
+        <% @devices.each do |d| %>
+        <div class="col-md-55">
+            <div class="thumbnail">
+                <div class="image view view-first">
+                    <img style="width: 100%; display: block;" src="<%= d.pic.to_s[0..d.pic.to_s.rindex(".")-1] + "/picture.jpg" %>" alt="image" />
+                    <div class="mask">
+                        <p><%= d.description %></p>
+                        <div class="tools tools-bottom">
+                            <%= link_to device_path(d) do %>
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                            <% end %>
+                            <%= link_to device_path(d), method: :delete, data: {confirm: 'Вы уверены, что хотите удалить прибор?' } do %>
+                            <i class="fa fa-times"></i>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+                <div class="caption">
+                    <p><%= d.title %></p>
+                </div>
+            </div>
         </div>
-    <% end %>
-<% end %>
-<% unless @i == 0 %>
+        <% end %>
     </div>
-<% end %>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- /page content -->
